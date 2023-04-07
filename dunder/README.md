@@ -12,7 +12,7 @@ cn :)
 
 ## Description
 
-A simple step sequencer and drum machine based on [EuclideanDrums](https://github.com/electro-smith/DaisyExamples/tree/master/pod/EuclideanDrums).
+A simple step sequencer and drum machine based on [EuclideanDrums](https://github.com/electro-smith/DaisyExamples/tree/master/pod/EuclideanDrums), for the Daisy Pod.
 The sequencer's length is set to 16 steps.
 
 ## Controls
