@@ -29,7 +29,7 @@ float k1old, k2old = 0.f; // for comparing with old pot values
 uint8_t outerMode = 0; // == 0 is "edit", == 1 is "play"
 					   //   "edit" lets us modify kickSeq and snareSeq with buttons
 					   //   "play" loops the sequences and lets us modify parameters based on innerMode
-uint8_t innerMode = 0 // innerMode only matters during "play".
+uint8_t innerMode = 0; // innerMode only matters during "play".
 					  // == 0 is "kick", == 1 is "snare", == 2 is "reverb", == 3 is "overdrive", == 4 is "tempo"?
                       // knobs will be available to adjust various attributes
 
@@ -50,9 +50,9 @@ const uint8_t MODE_TEMPO = 4;
 const uint8_t TOTAL_MODES = 5;
 
 
-void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
-                   AudioHandle::InterleavingOutputBuffer out,
-                   size_t                                size)
+void AudioCallback(AudioHandle::InputBuffer  in,
+                   AudioHandle::OutputBuffer out,
+                   size_t                    size)
 {
     float osc_out, noise_out, snr_env_out, kck_env_out, sig, output;
 
@@ -78,8 +78,8 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
 		sig = drive.Process(sig);
 		GetReverbSample(output, sig);
 
-        out[i]     = output;
-        out[i + 1] = output;
+        out[i][0] = output;
+        out[i][1] = output;
     }
 }
 
